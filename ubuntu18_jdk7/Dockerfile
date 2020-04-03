@@ -13,7 +13,8 @@ RUN curl -v -O -L -k https://softwarepublico.gov.br/social/citsmart/versoes-esta
 RUN mkdir -p /usr/local/java \
     && mv jdk-7u80-linux-x64.tar.gz /usr/local/java/ \
     && cd /usr/local/java \
-    && tar xvzf jdk-7u80-linux-x64.tar.gz
+    && tar xvzf jdk-7u80-linux-x64.tar.gz \
+    && rm jdk-7u80-linux-x64.tar.gz
 
 # Environment variables
 RUN echo "" >> /etc/profile \
