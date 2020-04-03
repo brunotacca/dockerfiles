@@ -3,11 +3,11 @@ FROM ubuntu:18.04
 LABEL maintainer="Bruno V. Tacca"
 
 # You can download the tar.gz from an external link
-#RUN apt-get update && apt-get install -y curl && apt-get clean
-#RUN curl -v -O -L -k https://softwarepublico.gov.br/social/citsmart/versoes-estaveis/jdk-7u80-linux-x64.tar.gz
+RUN apt-get update && apt-get install -y curl && apt-get clean
+RUN curl -v -O -L -k https://softwarepublico.gov.br/social/citsmart/versoes-estaveis/jdk-7u80-linux-x64.tar.gz
 
 # Or you can copy it from your local machine
-COPY ./jdk-7u80-linux-x64.tar.gz /
+#COPY ./jdk-7u80-linux-x64.tar.gz /
 
 # Making dirs and Extracting tar.gz
 RUN mkdir -p /usr/local/java \
