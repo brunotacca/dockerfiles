@@ -1,3 +1,5 @@
-# Tomcat7 installation over Ubuntu18 with JDK7u80
+# Ubuntu18 with JDK7u80 & Tomcat7
 
-#TODO
+Tomcat7 installation with legacy JDK7u80 over Ubuntu18.
+
+Followed official tomcat repository guidelines for Dockerfile.
