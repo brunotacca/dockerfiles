@@ -2,4 +2,4 @@
 
 Simple installation of JDK7u80.
 
-It can be used as base for another containers.
+It can be used as base for custom images.
