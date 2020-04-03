@@ -23,6 +23,3 @@ RUN update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.7
     && update-alternatives --set java /usr/local/java/jdk1.7.0_80/bin/java \
     && update-alternatives --set javac /usr/local/java/jdk1.7.0_80/bin/javac \
     && update-alternatives --set javaws /usr/local/java/jdk1.7.0_80/bin/javaws
-
-# Reload profile
-SHELL ["/bin/bash", "-c", "source /etc/profile"]
