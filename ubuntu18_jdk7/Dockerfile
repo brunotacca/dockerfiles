@@ -26,6 +26,10 @@ RUN echo "" >> /etc/profile \
     && echo "export JRE_HOME" >> /etc/profile \
     && echo "export PATH" >> /etc/profile
 
+ENV JAVA_HOME=/usr/local/java/jdk1.7.0_80
+ENV JRE_HOME=/usr/local/java/jdk1.7.0_80
+ENV PATH=$PATH:$JRE_HOME/bin:$JAVA_HOME/bin
+
 # Alternatives
 RUN update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.7.0_80/bin/java" 1 \
     && update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.7.0_80/bin/javac" 1 \
