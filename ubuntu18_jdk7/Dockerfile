@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 LABEL maintainer="Bruno V. Tacca"
 
 RUN apt-get update && apt-get install -y curl && apt-get clean \
-    # You can download the tar.gz from an external link (Check if it's available)
+# Make sure to check if the mirror is available. It's also good to validate it with md5sum and sha512sum.
     && curl -v -O -L -k https://softwarepublico.gov.br/social/citsmart/versoes-estaveis/jdk-7u80-linux-x64.tar.gz \
     && mkdir -p /usr/local/java \
     && mv jdk-7u80-linux-x64.tar.gz /usr/local/java/ \
