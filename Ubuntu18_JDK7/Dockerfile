@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-LABEL maintainer="Bruno Tacca"
+LABEL maintainer="Bruno V. Tacca"
 
 # You can download the tar.gz from an external link
 #RUN apt-get update && apt-get install -y curl && apt-get clean
