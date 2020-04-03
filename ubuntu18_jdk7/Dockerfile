@@ -17,15 +17,6 @@ RUN mkdir -p /usr/local/java \
     && rm /usr/local/java/jdk-7u80-linux-x64.tar.gz
 
 # Environment variables
-#RUN echo "" >> /etc/profile \
-    #&& echo "JAVA_HOME=/usr/local/java/jdk1.7.0_80" >> /etc/profile \
-    #&& echo "JRE_HOME=/usr/local/java/jdk1.7.0_8" >> /etc/profile \
-    #&& echo "PATH=$PATH:$JRE_HOME/bin:$JAVA_HOME/bin" >> /etc/profile \
-    #&& echo "" >> /etc/profile \
-    #&& echo "export JAVA_HOME" >> /etc/profile \
-    #&& echo "export JRE_HOME" >> /etc/profile \
-    #&& echo "export PATH" >> /etc/profile
-
 ENV JAVA_HOME=/usr/local/java/jdk1.7.0_80
 ENV JRE_HOME=/usr/local/java/jdk1.7.0_80
 ENV PATH=$PATH:$JRE_HOME/bin:$JAVA_HOME/bin
