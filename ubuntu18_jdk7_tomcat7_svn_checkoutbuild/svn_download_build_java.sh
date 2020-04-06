@@ -137,11 +137,11 @@ echo
 SVN_URL=${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}
 echo $SVN_URL > ${SVN_FOLDER}/last_svn_url
 if [ -d $PROJECT_FOLDER ]; then
-    SVN_ACTUAL_URL=$(svn info ${PROJECT_FOLDER} | grep URL | sed  "s/URL: //")
-    if [ "$SVN_ACTUAL_URL" == "$SVN_URL" ]; then
+    SVN_ACTUAL_URL=$(svn info ${PROJECT_FOLDER} | grep URL | sed "s/URL: //" | head -1)
+    if [ $SVN_ACTUAL_URL == $SVN_URL ]; then
        svn update --username ${SVN_USER} ${PROJECT_FOLDER}
     else
-       svn switch --username ${SVN_USER} $URL ${PROJECT_FOLDER}
+       svn switch --username ${SVN_USER} $SVN_URL ${PROJECT_FOLDER}
     fi
 else
     svn checkout --username ${SVN_USER} ${SVN_URL} ${PROJECT_FOLDER}
@@ -182,7 +182,7 @@ echo "Building"
 echo "----------"
 echo
 
-ant -f 'find $SVN_MODULE/src -name build.xml'
+ant -f $(find $PROJECT_FOLDER/src -name build.xml)
 
 if [ "$?" != "0" ]; then
     echo
