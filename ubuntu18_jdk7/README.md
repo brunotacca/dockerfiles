@@ -1,4 +1,4 @@
-# Ubuntu18 with JDK7u80
+# Java JDK7u80 over Ubuntu18
 
 Legacy JDK7u80 installation over Ubuntu18
 

@@ -1,11 +1,9 @@
-FROM ubuntu:18.04
+#FROM ubuntu:18.04
+FROM tacca/ubuntu18_jdk7
 
 LABEL maintainer="Bruno V. Tacca"
 
 # Environment variables
-ENV JAVA_HOME=/usr/local/java/jdk1.7.0_80
-ENV JRE_HOME=/usr/local/java/jdk1.7.0_80
-ENV PATH=$PATH:$JRE_HOME/bin:$JAVA_HOME/bin
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 ENV TOMCAT_MAJOR 7
@@ -20,14 +18,7 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends curl dpkg-dev gcc libapr1-dev libssl-dev make; \
     apt-get autoclean && apt-get clean --dry-run; \
 # Make sure to check if these mirrors are available. It's also good to validate them with md5sum and sha512sum.
-    curl -v -O -L -k https://softwarepublico.gov.br/social/citsmart/versoes-estaveis/jdk-7u80-linux-x64.tar.gz; \
     curl -v -O -L -k http://mirror.nbtelecom.com.br/apache/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz; \
-    mkdir -p /usr/local/java; \
-    mv jdk-7u80-linux-x64.tar.gz /usr/local/java/; \
-    cd /usr/local/java; \
-    tar xvzf jdk-7u80-linux-x64.tar.gz; \
-    rm /usr/local/java/jdk-7u80-linux-x64.tar.gz; \
-    cd /; \
     mkdir -p $CATALINA_HOME; \
     mv apache-tomcat-$TOMCAT_VERSION.tar.gz $CATALINA_HOME/tomcat.tar.gz; \
     cd $CATALINA_HOME; \
@@ -60,7 +51,7 @@ RUN set -eux; \
     \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
-	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark > /dev/null; \
+	apt-mark manual $savedAptMark > /dev/null; \
 	find "$TOMCAT_NATIVE_LIBDIR" -type f -executable -exec ldd '{}' ';' \
 		| awk '/=>/ { print $(NF-1) }' \
 		| sort -u \
