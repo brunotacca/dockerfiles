@@ -13,7 +13,7 @@
         alternateUsernameAllowed="true" 
         auth="Container" 
         driverClassName="org.postgresql.Driver" 
-        factory="com.zaxxer.hikari.HikariJNDIFactory"
+        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
         name="jdbc/<USER_DATABASE>" 
         type="javax.sql.DataSource" 
         url="jdbc:postgresql://<HOST-IP>:5432/<DB_NAME>?autoReconnect=true" 
