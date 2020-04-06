@@ -1,7 +1,9 @@
 ########################################### 
 #!/bin/bash 
 # 
-# Checkout and Build Java Projects from a custom SVN.
+# - Checkout from a custom SVN.
+# - Build Java Projects with ANT.
+# - Move .war to tomcat webapps dir.
 # 
 # Author: Bruno Tacca
 # Date: 2020-04-06
