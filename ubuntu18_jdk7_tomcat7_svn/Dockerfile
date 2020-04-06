@@ -5,7 +5,6 @@ LABEL maintainer="Bruno Tacca <github.com/brunotacca>"
 RUN set -eux; \
     savedAptMark="$(apt-mark showmanual)"; \
     apt-get update; \
-    #apt-get install -y --no-install-recommends curl subversion; \
     apt-get install -y subversion; \
     apt-get autoclean && apt-get clean --dry-run; \
     # mark to hold the subversion package.
