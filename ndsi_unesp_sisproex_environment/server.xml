@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <Server port="8005" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+  <Listener className="org.apache.catalina.core.JasperListener" />
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"
+            appContextProtection="true" classesToInitialize="org.postgresql.jdbc2.AbstractJdbc2ResultSet" />
+  <GlobalNamingResources>
+    <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
+    
+    <Resource 
+        alternateUsernameAllowed="true" 
+        auth="Container" 
+        driverClassName="org.postgresql.Driver" 
+        factory="com.zaxxer.hikari.HikariJNDIFactory"
+        name="jdbc/<USER_DATABASE>" 
+        type="javax.sql.DataSource" 
+        url="jdbc:postgresql://<HOST-IP>:5432/<DB_NAME>?autoReconnect=true" 
+        username="<USER>"
+        password="<PASSWORD>"
+        connectionTimeout="30000"
+        idleTimeout="120000"
+        maxLifetime="600000"
+        minimumIdle="5"
+        maximumPoolSize="100"
+        />
+  </GlobalNamingResources>
+
+  <Service name="Catalina">
+    <Connector connectionTimeout="20000" port="8090" protocol="org.apache.coyote.http11.Http11NioProtocol" redirectPort="8443"/>
+    <Connector port="8009" protocol="org.apache.coyote.ajp.AjpNioProtocol" redirectPort="8443" maxThreads="1000" processorCache="1000" acceptorThreadCount="2" URIEncoding="UTF-8"/>
+    <Engine defaultHost="localhost" name="Catalina">
+      <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+      </Realm>
+      <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true" xmlValidation="false" xmlNamespaceAware="false">
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
+      </Host>
+    </Engine>
+  </Service>
+
+</Server>

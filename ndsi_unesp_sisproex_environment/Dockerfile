@@ -31,8 +31,11 @@ RUN set -eux; \
     export TERM=xterm-256color; \
     export LANG=pt_BR.UTF-8; \
     export LC_ALL=pt_BR.UTF-8; \
+    # reload profile
     source /etc/profile; \
-    #
+    # add postgresql jdbc to tomcat lib
+    wget https://jdbc.postgresql.org/download/postgresql-42.2.12.jre7.jar; \
+    mv postgresql-42.2.12.jre7 $CATALINA_HOME/lib; \
     # mark to hold the later usage packages.
 	apt-mark hold rsync vim locales; \
     apt-get autoclean && apt-get clean --dry-run; \
@@ -45,4 +48,4 @@ RUN set -eux; \
     echo "hi";
 
 # Reload profile
-SHELL ["/bin/bash", "-c", "source /etc/profile"]
+RUN ["/bin/bash", "-c", "source /etc/profile"]
