@@ -1,6 +1,3 @@
-#FROM tacca/ubuntu18_jdk7
-#LABEL maintainer="Bruno V. Tacca"
-
 FROM ubuntu:18.04
 
 LABEL maintainer="Bruno V. Tacca"
@@ -72,8 +69,8 @@ RUN set -eux; \
 		| sort -u \
 		| xargs -r apt-mark manual \
 	; \
-	#apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-	#rm -rf /var/lib/apt/lists/*; \
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /var/lib/apt/lists/*; \
 	\
 # sh removes env vars it doesn't support (ones with periods)
 # https://github.com/docker-library/tomcat/issues/77
