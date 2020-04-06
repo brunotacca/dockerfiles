@@ -1,6 +1,6 @@
 FROM tacca/ubuntu18_jdk7_tomcat7
 
-LABEL maintainer="Bruno Tacca <https://github.com/brunotacca>"
+LABEL maintainer="Bruno Tacca <github.com/brunotacca>"
 
 RUN set -eux; \
     savedAptMark="$(apt-mark showmanual)"; \
