@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-LABEL maintainer="Bruno V. Tacca"
+LABEL maintainer="Bruno Tacca <https://github.com/brunotacca>"
 
 RUN set -eux; \
     savedAptMark="$(apt-mark showmanual)"; \

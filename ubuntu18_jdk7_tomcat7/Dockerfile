@@ -1,7 +1,7 @@
 #FROM ubuntu:18.04
 FROM tacca/ubuntu18_jdk7
 
-LABEL maintainer="Bruno V. Tacca"
+LABEL maintainer="Bruno Tacca <https://github.com/brunotacca>"
 
 # Environment variables
 ENV CATALINA_HOME /usr/local/tomcat
