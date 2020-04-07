@@ -29,12 +29,14 @@ RUN set -eux; \
 # path used in build.xml
     ln -s $CATALINA_HOME/ /usr/share/; \
 # log folder
-    mkdir /SISTEMAS/logs; \
-    chmod -R 777 /SISTEMAS/logs; \
+    mkdir -p /SISTEMAS/logs; \
+    chmod 777 -R /SISTEMAS; \
 # mark to hold the later usage packages.
-	apt-mark hold rsync vim locales; \
+    apt-mark hold rsync vim locales; \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
-	apt-mark auto '.*' > /dev/null; \
-	apt-mark manual $savedAptMark > /dev/null; \
-	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-	rm -rf /var/lib/apt/lists/*;
+    apt-mark auto '.*' > /dev/null; \
+    apt-mark manual $savedAptMark > /dev/null; \
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+    rm -rf /var/lib/apt/lists/*;
+
+CMD ["tail", "-f", "/dev/null"]
