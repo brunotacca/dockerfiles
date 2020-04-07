@@ -19,9 +19,9 @@ RUN set -eux; \
     wget https://jdbc.postgresql.org/download/postgresql-42.2.12.jre7.jar; \
     mv postgresql-42.2.12.jre7.jar $CATALINA_HOME/lib; \
 # server.xml pre configuration
-    wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/brunotacca/dockerfiles/master/ndsi_unesp_sisproex_environment/server.xml; \
+    wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/brunotacca/dockerfiles/master/unesp_sisproex_environment/server.xml; \
 # svn download and build sh
-    wget  --no-check-certificate --content-disposition https://raw.githubusercontent.com/brunotacca/dockerfiles/master/ndsi_unesp_sisproex_environment/svn_download_build_java.sh; \
+    wget  --no-check-certificate --content-disposition https://raw.githubusercontent.com/brunotacca/dockerfiles/master/unesp_sisproex_environment/svn_download_build_java.sh; \
     # mark to hold the later usage packages.
 	apt-mark hold rsync vim locales; \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
