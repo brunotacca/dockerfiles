@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+    sisproex:
+        container_name: sisproex
+        image: tacca/unesp_sisproex_environment
+        hostname: sisproex.homolog.unesp.br
+        restart: always
+        ports:
+            - "8888:8080"
+        volumes:
+            - .:/docker_sources
+        command: sh /docker_sources/install.sh
