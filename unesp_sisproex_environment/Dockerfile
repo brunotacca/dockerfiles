@@ -18,17 +18,23 @@ RUN set -eux; \
 # Postgresql JDBC - JDK7
     wget https://jdbc.postgresql.org/download/postgresql-42.2.12.jre7.jar; \
     mv postgresql-42.2.12.jre7.jar $CATALINA_HOME/lib; \
-# server.xml pre configuration
+# base configuration for server.xml
     wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/brunotacca/dockerfiles/master/unesp_sisproex_environment/server.xml; \
-# svn download and build sh
+    mv server.xml $CATALINA_HOME/conf/; \
+# svn download and build shell script
     wget  --no-check-certificate --content-disposition https://raw.githubusercontent.com/brunotacca/dockerfiles/master/unesp_sisproex_environment/svn_download_build_java.sh; \
-    # mark to hold the later usage packages.
+    mv svn_download_build_java.sh /usr/local/bin; \
+    chmod +x /usr/local/bin/svn_download_build_java.sh;\ 
+# project specific - sisproex 
+# path used in build.xml
+    ln -s $CATALINA_HOME/ /usr/share/; \
+# log folder
+    mkdir /SISTEMAS/logs; \
+    chmod -R 777 /SISTEMAS/logs; \
+# mark to hold the later usage packages.
 	apt-mark hold rsync vim locales; \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
 	apt-mark manual $savedAptMark > /dev/null; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-	rm -rf /var/lib/apt/lists/*; \
-    mv server.xml $CATALINA_HOME/conf/; \
-    mv svn_download_build_java.sh /usr/local/bin; \
-    chmod +x /usr/local/bin/svn_download_build_java.sh;
+	rm -rf /var/lib/apt/lists/*;
