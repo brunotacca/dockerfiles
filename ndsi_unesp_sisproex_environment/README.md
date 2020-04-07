@@ -1,3 +1,0 @@
-# UNESP NDSI - SISPROEX Homolog Environment
-
-...
