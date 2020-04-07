@@ -19,3 +19,4 @@ How to use:
 - "exit"
 9) Start tomcat from outside
 - "docker exec <container-name> catalina.sh start"
+10) Access at localhost:8888 (or change the mapped port in docker-compose.yml)

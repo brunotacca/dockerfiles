@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.3'
 
 services:
     sisproex:
@@ -10,4 +10,6 @@ services:
             - "8888:8080"
         volumes:
             - .:/docker_sources
+        environment: 
+            - CATALINA_OPTS=-Xmx6g -Xms6g -XX:MaxPermSize=3g
         command: sh /docker_sources/install.sh

@@ -14,9 +14,9 @@
         auth="Container" 
         driverClassName="org.postgresql.Driver" 
         factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-        name="jdbc/<USER_DATABASE>" 
+        name="<RESOURCE_NAME>" 
         type="javax.sql.DataSource" 
-        url="jdbc:postgresql://<HOST_IP>:5432/<DB_NAME>?autoReconnect=true" 
+        url="jdbc:postgresql://<HOST_IP>:<HOST_PORT>/<DB_NAME>?<CONNECTION_PARAMS>" 
         username="<USER>"
         password="<PASSWORD>"
         connectionTimeout="30000"
@@ -34,7 +34,7 @@
       <Realm className="org.apache.catalina.realm.LockOutRealm">
         <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
       </Realm>
-      <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true" xmlValidation="false" xmlNamespaceAware="false">
+      <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
       </Host>
     </Engine>
