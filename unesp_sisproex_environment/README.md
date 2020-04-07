@@ -1,4 +1,4 @@
-# UNESP NDSI - SISPROEX Homolog Environment
+# UNESP NDSI - SISPROEX Test Environment
 
 How to use:
 1) Install docker.
