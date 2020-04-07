@@ -1,4 +1,4 @@
-FROM tacca/ubuntu18_jdk7_tomcat7_svn
+FROM tacca/ubuntu18_jdk7_tomcat7_svn_ant
 
 LABEL maintainer="Bruno Tacca <github.com/brunotacca>"
 
