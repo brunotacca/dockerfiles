@@ -1,7 +1,7 @@
 # UNESP NDSI - SISPROEX Test Environment
 
 How to use:
-1) Install docker.
+1) Install docker & docker-compose.
 2) Download this folder at your local machine.
 3) Edit config_server_xml.sh for your needs.
 4) Edit docker-compose.yml for your needs (different names for example)
