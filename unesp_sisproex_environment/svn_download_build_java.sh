@@ -7,6 +7,8 @@
 # 
 # Author: Bruno Tacca
 # Date: 2020-04-06
+#
+# Old version: 2013 by Andre Penteado / Felipe Gasparelo / Alessandro Moraes
 ########################################### 
 
 # https://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
@@ -21,6 +23,7 @@ then
    echo
    exit 0 
 fi 
+
 clear 
 
 # Checking environment vars. -z > Empty
@@ -50,74 +53,87 @@ then
     mkdir -p ${SVN_FOLDER}
 fi
 
-###################################################################### 
-echo 
-echo "Download specific information:" 
-echo "------------------------------------" 
-echo 
-
-# Getting SVN_ROOT from param
-SVN_ROOT=$1
-
-#############
-# Checking last svn user
-if [ ! -e $SVN_FOLDER/last_svn_user ] 
+if [ $1 != "last" ] 
 then
-    echo "" > ${SVN_FOLDER}/last_svn_user
-fi
-SVN_USER=$(cat $SVN_FOLDER/last_svn_user)
-echo -n "SVN User [ $SVN_USER ] > " 
-read NEW_SVN_USER 
-if [ -n "$NEW_SVN_USER" ] 
-then 
-    SVN_USER="$NEW_SVN_USER" 
-    echo $SVN_USER > ${SVN_FOLDER}/last_svn_user
-fi
-if [ -z "$SVN_USER" ]; then echo "User required."; exit 1; fi;
+    ###################################################################### 
+    echo 
+    echo "Download specific information:" 
+    echo "------------------------------------" 
+    echo 
 
-#############
-# Checking last svn project
-if [ ! -e $SVN_FOLDER/last_svn_project ] 
+    # Getting SVN_ROOT from param
+    SVN_ROOT=$1
+    echo $SVN_ROOT > ${SVN_FOLDER}/last_svn_root
+
+    #############
+    # Checking last svn user
+    if [ ! -e $SVN_FOLDER/last_svn_user ] 
+    then
+        echo "" > ${SVN_FOLDER}/last_svn_user
+    fi
+    SVN_USER=$(cat $SVN_FOLDER/last_svn_user)
+    echo -n "SVN User [ $SVN_USER ] > " 
+    read NEW_SVN_USER 
+    if [ -n "$NEW_SVN_USER" ] 
+    then 
+        SVN_USER="$NEW_SVN_USER" 
+        echo $SVN_USER > ${SVN_FOLDER}/last_svn_user
+    fi
+    if [ -z "$SVN_USER" ]; then echo "User required."; exit 1; fi;
+
+    #############
+    # Checking last svn project
+    if [ ! -e $SVN_FOLDER/last_svn_project ] 
+    then
+        echo "" > ${SVN_FOLDER}/last_svn_project
+    fi
+    SVN_MODULE=$(cat $SVN_FOLDER/last_svn_project)
+    echo -n "SVN Project [ $SVN_MODULE ] > " 
+    read NEW_SVN_MODULE 
+    if [ -n "$NEW_SVN_MODULE" ] 
+    then 
+        SVN_MODULE="$NEW_SVN_MODULE" 
+        echo $SVN_MODULE > ${SVN_FOLDER}/last_svn_project
+    fi 
+    if [ -z "$SVN_MODULE" ]; then echo "Project required."; exit 1; fi
+
+    #############
+
+    if [ ! -e $SVN_FOLDER/last_svn_branch ] 
+    then
+        echo "trunk" > ${SVN_FOLDER}/last_svn_branch
+    fi
+    SVN_BRANCH=$(cat $SVN_FOLDER/last_svn_branch)
+    echo -n "SVN Branch [ $SVN_BRANCH ] > " 
+    read NEW_SVN_BRANCH 
+    if [ -n "$NEW_SVN_BRANCH" ] 
+    then 
+        SVN_BRANCH="$NEW_SVN_BRANCH" 
+        echo $SVN_BRANCH > ${SVN_FOLDER}/last_svn_branch
+    fi 
+    if [ -z "$SVN_BRANCH" ]; then echo "Branch required."; exit 1; fi
+
+    #############
+
+    echo 
+    echo "------------------------------------" 
+    echo "Going to download as $SVN_USER from ${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}" 
+    echo "------------------------------------" 
+    echo 
+    echo -n "Type '1' to confirm: " 
+    read confirmation 
+    echo 
+    if [ -e $confirmation ] || [ $confirmation != "1" ]; then exit 0; fi 
+
+fi
+
+if [ $1 == "last" ] && [ -e ${SVN_FOLDER}/last_svn_url ]
 then
-    echo "" > ${SVN_FOLDER}/last_svn_project
+    SVN_USER=$(cat $SVN_FOLDER/last_svn_user)
+    SVN_ROOT=$(cat $SVN_FOLDER/last_svn_root)
+    SVN_MODULE=$(cat $SVN_FOLDER/last_svn_project)
+    SVN_BRANCH=$(cat $SVN_FOLDER/last_svn_branch)
 fi
-SVN_MODULE=$(cat $SVN_FOLDER/last_svn_project)
-echo -n "SVN Project [ $SVN_MODULE ] > " 
-read NEW_SVN_MODULE 
-if [ -n "$NEW_SVN_MODULE" ] 
-then 
-    SVN_MODULE="$NEW_SVN_MODULE" 
-    echo $SVN_MODULE > ${SVN_FOLDER}/last_svn_project
-fi 
-if [ -z "$SVN_MODULE" ]; then echo "Project required."; exit 1; fi
-
-#############
-
-if [ ! -e $SVN_FOLDER/last_svn_branch ] 
-then
-    echo "trunk" > ${SVN_FOLDER}/last_svn_branch
-fi
-SVN_BRANCH=$(cat $SVN_FOLDER/last_svn_branch)
-echo -n "SVN Branch [ $SVN_BRANCH ] > " 
-read NEW_SVN_BRANCH 
-if [ -n "$NEW_SVN_BRANCH" ] 
-then 
-    SVN_BRANCH="$NEW_SVN_BRANCH" 
-    echo $SVN_BRANCH > ${SVN_FOLDER}/last_svn_branch
-fi 
-if [ -z "$SVN_BRANCH" ]; then echo "Branch required."; exit 1; fi
-
-#############
-
-echo 
-echo "------------------------------------" 
-echo "Going to download as $SVN_USER from ${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}" 
-echo "------------------------------------" 
-echo 
-echo -n "Type '1' to confirm: " 
-read confirmation 
-echo 
-if [ -e $confirmation ] || [ $confirmation != "1" ]; then exit 0; fi 
 
 ###################################################################### 
  
