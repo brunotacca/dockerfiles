@@ -26,5 +26,10 @@ ln -s $CATALINA_HOME/ /usr/share/
 mkdir -p /SISTEMAS/logs; \
 chmod 777 -R /SISTEMAS; \
 
+# Aliases
+touch $CATALINA_HOME/logs/catalina.out
+alias tt="tail -f $CATALINA_HOME/logs/catalina.out"
+alias build="svn_download_build_java last"
+
 # Keep the container running 
 tail -f /dev/null

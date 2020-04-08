@@ -14,7 +14,7 @@
         auth="Container" 
         driverClassName="org.postgresql.Driver" 
         factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-        name="<RESOURCE_NAME>" 
+        name="jdbc/<RESOURCE_NAME>" 
         type="javax.sql.DataSource" 
         url="jdbc:postgresql://<HOST_IP>:<HOST_PORT>/<DB_NAME>?<CONNECTION_PARAMS>" 
         username="<USER>"

@@ -9,18 +9,19 @@
 ########################################### 
 
 # server.xml contains the following connection line:
-#   name="<RESOURCE_NAME>" 
+#   name="jdbc/<RESOURCE_NAME>" 
 #   url="jdbc:postgresql://<HOST_IP>:<HOST_PORT>/<DB_NAME>?<CONNECTION_PARAMS>" 
 #   username="<USER>"
 #   password="<PASSWORD>"
 
+# Please note that regex special characters must be scaped
 RESOURCE_NAME='yourresourcename'
 HOST_IP='yourhostip'
 HOST_PORT='5432'
 DB_NAME='yourdbname'
 CONNECTION_PARAMS='autoReconnect=true'
 USER='youruser'
-PASSWORD='yourpasswrod'
+PASSWORD='yourpassword'
 
 sed -i "s/<RESOURCE_NAME>/$RESOURCE_NAME/g" $CATALINA_HOME/conf/server.xml
 sed -i "s/<HOST_IP>/$HOST_IP/g" $CATALINA_HOME/conf/server.xml

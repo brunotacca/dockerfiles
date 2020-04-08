@@ -3,6 +3,7 @@
 How to use:
 1) Install docker & docker-compose.
 2) Download this folder at your local machine.
+- wget https://github.com/brunotacca/dockerfiles/archive/master.zip
 3) Edit config_server_xml.sh for your needs.
 4) Edit docker-compose.yml for your needs (different names for example)
 4) In the folder run the command:
