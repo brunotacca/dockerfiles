@@ -16,13 +16,16 @@ How to use:
 - - Remove SVN_PASSWORD and credentials if you don't want the auto build.
 4) Launch the container by typing:
 - "docker-compose up -d"
-5) Access tomcat logs by typing:
-- "docker logs -t -f {container-name}"
-6) Updating your project - manually 
+- Access at localhost:8888 (or change the mapped port in docker-compose.yml)
+5) Updating your project - manually 
 - Access the container "docker exec -it {container-name} bash"
 - Download and build your project "svn_download_build.sh https://yoursvnhost.com/svn
-- - If you save your credentials the first time, later you can just run the alias "build"
+- - If you save your credentials the first time, later you can just run the alias "svn_download_build_java.sh last"
 - - Although it's not recommended
-7) Updating your project - automatically
-- docker exec {container-name} build
-8) Access at localhost:8888 (or change the mapped port in docker-compose.yml)
+6) Useful alias to create at your host machine:
+- alias tt='docker logs -t -f {container-name}'
+- alias build='docker exec -it {container-name} bash svn_download_build_java.sh last'
+- alias dcu="docker-compose up -d"
+- alias dcs="docker-compose stop"
+- alias dcd="docker-compose down"
+- alias dcr="docker-compose restart"

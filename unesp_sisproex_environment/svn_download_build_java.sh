@@ -140,7 +140,7 @@ then
     echo "------------------------------------" 
     echo 
     # Checking for auto password
-    if [ -e "$SVN_PASSWORD" ]
+    if [ -n "$SVN_PASSWORD" ]
     then 
         SVN_PWLINE="--non-interactive --trust-server-cert --password $SVN_PASSWORD"
     fi  
