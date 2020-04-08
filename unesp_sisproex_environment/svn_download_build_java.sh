@@ -42,7 +42,7 @@ fi
 echo "Using CATALINA_HOME: $CATALINA_HOME"
 
 # Checking user and svn folder
-USER_FOLDER=/home/$(whoami)
+USER_FOLDER=$HOME
 SVN_FOLDER=$USER_FOLDER/svn
 echo "SVN Folder: ${SVN_FOLDER}"
 

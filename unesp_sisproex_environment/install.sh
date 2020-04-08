@@ -23,13 +23,18 @@ sh /docker_sources/config_server_xml.sh
 ln -s $CATALINA_HOME/ /usr/share/
 
 # Logs dir
-mkdir -p /SISTEMAS/logs; \
-chmod 777 -R /SISTEMAS; \
+mkdir -p /SISTEMAS/logs
+chmod 777 -R /SISTEMAS
 
 # Aliases
 touch $CATALINA_HOME/logs/catalina.out
-alias tt="tail -f $CATALINA_HOME/logs/catalina.out"
-alias build="svn_download_build_java last"
+echo "" >> ~/.bashrc
+echo "alias tt='tail -f $CATALINA_HOME/logs/catalina.out'" >> ~/.bashrc
+echo "alias build='svn_download_build_java last'" >> ~/.bashrc
+echo "tstart catalina.sh start" >> ~/.bashrc
+echo "tstop catalina.sh stop'" >> ~/.bashrc
+source ~/.bash_profile
 
-# Keep the container running 
-tail -f /dev/null
+# Keep the container running
+#tail -f /dev/null
+catalina
