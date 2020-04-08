@@ -133,6 +133,11 @@ then
     SVN_ROOT=$(cat $SVN_FOLDER/last_svn_root)
     SVN_MODULE=$(cat $SVN_FOLDER/last_svn_project)
     SVN_BRANCH=$(cat $SVN_FOLDER/last_svn_branch)
+    echo 
+    echo "------------------------------------" 
+    echo "Going to download as $SVN_USER from ${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}" 
+    echo "------------------------------------" 
+    echo 
 fi
 
 ###################################################################### 

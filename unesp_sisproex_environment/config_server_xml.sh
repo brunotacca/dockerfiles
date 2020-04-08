@@ -10,7 +10,7 @@
 
 # server.xml contains the following connection line:
 #        name="jdbc/{RESOURCE_NAME}" 
-#        url="jdbc:postgresql://{HOST_IP}:{HOST_PORT}/{DB_NAME}?{CONNECTION_PARAMS}" 
+#        jdbcUrl="jdbc:postgresql://{HOST_IP}:{HOST_PORT}/{DB_NAME}?{CONNECTION_PARAMS}" 
 #        username="{USER}"
 #        password="{PASSWORD}"
 

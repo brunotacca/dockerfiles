@@ -30,10 +30,11 @@ chmod 777 -R /SISTEMAS
 touch $CATALINA_HOME/logs/catalina.out
 echo "" >> ~/.bashrc
 echo "alias tt='tail -f $CATALINA_HOME/logs/catalina.out'" >> ~/.bashrc
-echo "alias build='svn_download_build_java last'" >> ~/.bashrc
+echo "alias build='svn_download_build_java.sh last'" >> ~/.bashrc
 echo "alias tstart='catalina.sh start'" >> ~/.bashrc
 echo "alias tstop='catalina.sh stop'" >> ~/.bashrc
 source ~/.bash_profile
 
 # Keep the container running
-catalina.sh start
+# tail -f /dev/null
+catalina.sh run
