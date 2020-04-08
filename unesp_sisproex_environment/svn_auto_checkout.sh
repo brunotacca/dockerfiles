@@ -17,9 +17,9 @@ SVN_PASSWORD='userpassword'
 ############################################
 
 # Checking user and svn folder
-PROJECT_FOLDER=${SVN_FOLDER}/${SVN_MODULE}
 USER_FOLDER=$HOME
 SVN_FOLDER=$USER_FOLDER/svn
+PROJECT_FOLDER=${SVN_FOLDER}/${SVN_MODULE}
 echo "SVN Folder: ${SVN_FOLDER}"
 
 # Checking svn folder
@@ -42,10 +42,8 @@ echo
 
 SVN_URL=${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}
 echo $SVN_URL > ${SVN_FOLDER}/last_svn_url
-# {sleep 3; echo "t"; } | svn checkout --username $SVN_USER --password $SVN_PASSWORD --no-auth-cache -r revision ${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}
-svn checkout --non-interactive --trust-server-cert --username $SVN_USER --password $SVN_PASSWORD --no-auth-cache -r revision ${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH} ${PROJECT_FOLDER}
-
-#svn checkout --username ${SVN_USER} ${SVN_URL} ${PROJECT_FOLDER}
+# Tip: pass '--no-auth-cache' if you don't want to save auth credentials.
+svn checkout --non-interactive --trust-server-cert --username $SVN_USER --password $SVN_PASSWORD ${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH} ${PROJECT_FOLDER}
 
 if [ "$?" != "0" ]; then 
     echo 

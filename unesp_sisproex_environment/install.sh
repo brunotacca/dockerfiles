@@ -1,5 +1,5 @@
-########################################### 
 #!/bin/bash 
+########################################### 
 # 
 # Run all custom shells
 # 
@@ -27,13 +27,16 @@ mkdir -p /SISTEMAS/logs
 chmod 777 -R /SISTEMAS
 
 # Aliases
-touch $CATALINA_HOME/logs/catalina.out
 echo "" >> ~/.bashrc
 echo "alias tt='tail -f $CATALINA_HOME/logs/catalina.out'" >> ~/.bashrc
 echo "alias build='svn_download_build_java.sh last'" >> ~/.bashrc
 echo "alias tstart='catalina.sh start'" >> ~/.bashrc
 echo "alias tstop='catalina.sh stop'" >> ~/.bashrc
-source ~/.bash_profile
+source ~/.bashrc
+
+# First download & build from SVN (Configure the file with your credentials)
+# Comment this if you want to do this manually
+sh /docker_sources/svn_auto_checkout.sh
 
 # Keep the container running
 # tail -f /dev/null
