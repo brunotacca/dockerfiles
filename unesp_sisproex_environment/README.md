@@ -16,12 +16,12 @@ How to use:
 - "docker-compose up -d"
 - To destroy the container: "docker-compose down"
 7) Access tomcat logs by typing:
-- "docker logs -t -f <container-name>"
+- "docker logs -t -f {container-name}"
 8) Updating your project - manually 
-- Access the container "docker exec -it <container-name> bash"
+- Access the container "docker exec -it {container-name} bash"
 - Download and build your project "svn_download_build.sh https://yoursvnhost.com/svn
 - - If you save your credentials the first time, later you can just run the alias "build"
 - - Although it's not recommended
 9) Updating your project - automatically
-- docker exec <container-name> build
+- docker exec {container-name} build
 10) Access at localhost:8888 (or change the mapped port in docker-compose.yml)
