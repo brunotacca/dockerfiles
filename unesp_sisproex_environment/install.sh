@@ -20,7 +20,7 @@ cat $CATALINA_HOME/conf/server.xml
 sh /docker_sources/config_server_xml.sh
 
 # Simbolic link to tomcat at /usr/share (needed at sisproex build.xml)
-ln -s $CATALINA_HOME/ /usr/share/
+ln -sfn $CATALINA_HOME/ /usr/share/
 
 # Logs dir
 mkdir -p /SISTEMAS/logs
@@ -36,5 +36,4 @@ echo "tstop catalina.sh stop'" >> ~/.bashrc
 source ~/.bash_profile
 
 # Keep the container running
-#tail -f /dev/null
-catalina
+catalina.sh start

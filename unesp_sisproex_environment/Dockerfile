@@ -21,6 +21,9 @@ RUN set -eux; \
 # HikariCP JDK7
     wget https://repo1.maven.org/maven2/com/zaxxer/HikariCP-java7/2.4.13/HikariCP-java7-2.4.13.jar; \
     mv HikariCP-java7-2.4.13.jar $CATALINA_HOME/lib; \
+# SLF4J (Hikari dependency)
+    wget https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar; \
+    mv slf4j-api-1.7.30.jar $CATALINA_HOME/lib; \
 # mark to hold the later usage packages.
     apt-mark hold rsync vim locales; \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
