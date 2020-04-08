@@ -18,6 +18,9 @@ RUN set -eux; \
 # Postgresql JDBC - JDK7
     wget https://jdbc.postgresql.org/download/postgresql-42.2.12.jre7.jar; \
     mv postgresql-42.2.12.jre7.jar $CATALINA_HOME/lib; \
+# HikariCP JDK7
+    wget https://repo1.maven.org/maven2/com/zaxxer/HikariCP-java7/2.4.13/HikariCP-java7-2.4.13.jar; \
+    mv HikariCP-java7-2.4.13.jar $CATALINA_HOME/lib; \
 # mark to hold the later usage packages.
     apt-mark hold rsync vim locales; \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies

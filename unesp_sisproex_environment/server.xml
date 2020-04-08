@@ -9,11 +9,12 @@
   <GlobalNamingResources>
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
     
+    <!--factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"-->
     <Resource 
         alternateUsernameAllowed="true" 
         auth="Container" 
         driverClassName="org.postgresql.Driver" 
-        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+        factory="com.zaxxer.hikari.HikariJNDIFactory"
         name="jdbc/<RESOURCE_NAME>" 
         type="javax.sql.DataSource" 
         url="jdbc:postgresql://<HOST_IP>:<HOST_PORT>/<DB_NAME>?<CONNECTION_PARAMS>" 

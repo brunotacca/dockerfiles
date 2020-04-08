@@ -11,5 +11,7 @@ services:
         volumes:
             - .:/docker_sources
         environment: 
-            - CATALINA_OPTS=-Xmx6g -Xms6g -XX:MaxPermSize=3g
+            - CATALINA_OPTS=-Xms4g -Xms6g -XX:MaxPermSize=4g -XX:PermSize=2g
         command: sh /docker_sources/install.sh
+
+
