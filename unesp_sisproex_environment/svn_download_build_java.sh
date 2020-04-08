@@ -127,6 +127,7 @@ then
 
 fi
 
+SVN_PWLINE=""
 if [ $1 == "last" ] && [ -e ${SVN_FOLDER}/last_svn_url ]
 then
     SVN_USER=$(cat $SVN_FOLDER/last_svn_user)
@@ -138,6 +139,12 @@ then
     echo "Going to download as $SVN_USER from ${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}" 
     echo "------------------------------------" 
     echo 
+    # Checking for auto password
+    if [ -e "$SVN_PASSWORD" ]
+    then 
+        SVN_PWLINE="--non-interactive --trust-server-cert --password $SVN_PASSWORD"
+    fi  
+
 fi
 
 ###################################################################### 
@@ -162,12 +169,12 @@ echo $SVN_URL > ${SVN_FOLDER}/last_svn_url
 if [ -d $PROJECT_FOLDER ]; then
     SVN_ACTUAL_URL=$(svn info ${PROJECT_FOLDER} | grep URL | sed "s/URL: //" | head -1)
     if [ $SVN_ACTUAL_URL == $SVN_URL ]; then
-       svn update --username ${SVN_USER} ${PROJECT_FOLDER}
+       svn update --username ${SVN_USER} ${SVN_PWLINE} ${PROJECT_FOLDER}
     else
-       svn switch --username ${SVN_USER} $SVN_URL ${PROJECT_FOLDER}
+       svn switch --username ${SVN_USER} ${SVN_PWLINE} $SVN_URL ${PROJECT_FOLDER}
     fi
 else
-    svn checkout --username ${SVN_USER} ${SVN_URL} ${PROJECT_FOLDER}
+    svn checkout --username ${SVN_USER} ${SVN_PWLINE} ${SVN_URL} ${PROJECT_FOLDER}
 fi
 
 if [ "$?" != "0" ]; then 
