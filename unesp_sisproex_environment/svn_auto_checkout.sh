@@ -8,11 +8,19 @@
 # Date: 2020-04-08
 ########################################### 
 
-SVN_ROOT='https://host.com/svn'
-SVN_MODULE='project'
-SVN_BRANCH='trunk'
-SVN_USER='userlogin'
-SVN_PASSWORD='userpassword'
+# Moved to env vars at docker-compose.yml
+#SVN_ROOT='https://host.com/svn'
+#SVN_MODULE='project'
+#SVN_BRANCH='trunk'
+#SVN_USER='userlogin'
+#SVN_PASSWORD='userpassword'
+
+# Checking environment vars. -z > Empty
+if [ -z "$SVN_USER" ] && [ -z "$SVN_PASSWORD" ]
+then 
+    echo "Need to set SVN_USER & SVN_PASSWORD"
+    exit 0
+fi  
 
 ############################################
 

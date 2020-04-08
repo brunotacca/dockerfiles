@@ -11,7 +11,25 @@ services:
         volumes:
             - .:/docker_sources
         environment: 
-            - CATALINA_OPTS=-Xms4g -Xms6g -XX:MaxPermSize=4g -XX:PermSize=2g
+# CATALINA_OPTS VM Memory Config
+            - 'CATALINA_OPTS=-Xms4g -Xmx6g -XX:MaxPermSize=4g -XX:PermSize=2g'
+# server.xml contains the following connection line:
+#        name="jdbc/{RESOURCE_NAME}" 
+#        jdbcUrl="jdbc:postgresql://{HOST_IP}:{HOST_PORT}/{DB_NAME}?{CONNECTION_PARAMS}" 
+#        username="{USER}"
+#        password="{PASSWORD}"
+# Please note that regex special characters must be scaped
+            - 'RESOURCE_NAME=yourresourcename'
+            - 'HOST_IP=yourhostip'
+            - 'HOST_PORT=5432'
+            - 'DB_NAME=yourdbname'
+            - 'CONNECTION_PARAMS=autoReconnect=true'
+            - 'USER=youruser'
+            - 'PASSWORD=yourpassword'
+# SVN Credentials for Auto Download and Build
+            - 'SVN_ROOT=https://host.com/svn'
+            - 'SVN_MODULE=project'
+            - 'SVN_BRANCH=trunk'
+            - 'SVN_USER=userlogin'
+            - 'SVN_PASSWORD=userpassword'
         command: ./docker_sources/install.sh
-
-
