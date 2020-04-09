@@ -53,7 +53,7 @@ if [ $SVN_ACTUAL_URL = $SVN_URL ]; then
     echo 
 
     echo "==============================================================="
-    if [ LOCAL_REVISION != ACTUAL_REVISION ]; then
+    if [ $LOCAL_REVISION != $ACTUAL_REVISION ]; then
         echo "Performing update... Running svn_download_build_java.sh last"
         echo 
         sh svn_download_build_java.sh last
