@@ -9,7 +9,7 @@ ENV LC_ALL=pt_BR.UTF-8
 RUN set -eux; \
     savedAptMark="$(apt-mark showmanual)"; \
     apt-get update; \
-    apt-get install -y rsync vim locales cron wget; \
+    apt-get install -y rsync vim locales wget; \
     apt-get autoclean && apt-get clean --dry-run; \
 # Configure these Locale vars for your need.
     locale-gen en_US en_US.UTF-8 pt_BR.UTF-8; \
@@ -25,7 +25,7 @@ RUN set -eux; \
     wget https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar; \
     mv slf4j-api-1.7.30.jar $CATALINA_HOME/lib; \
 # mark to hold the later usage packages.
-    apt-mark hold rsync vim locales cron; \
+    apt-mark hold rsync vim locales; \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
     apt-mark manual $savedAptMark > /dev/null; \

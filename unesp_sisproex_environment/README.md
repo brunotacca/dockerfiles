@@ -29,3 +29,9 @@ How to use:
 - alias dcs="docker-compose stop"
 - alias dcd="docker-compose down"
 - alias dcr="docker-compose restart"
+7) If you want to do auto update an regularly: (Every 5 minutes for example)
+- At your host machine, run "crontab -e"
+- Add this line: 
+- - */5 * * * * docker exec {container-name} bash svn_auto_update.sh
+- Restart the cron service "service cron restart"
+- Check if it's added with "crontab -l"

@@ -55,7 +55,7 @@ if [ $SVN_ACTUAL_URL = $SVN_URL ]; then
     if [ $LOCAL_REVISION != $ACTUAL_REVISION ]; then
         echo "Performing update... Running svn_download_build_java.sh last"
         echo 
-        sh svn_download_build_java.sh last
+        svn_download_build_java.sh last
         #svn update --non-interactive --trust-server-cert --username ${SVN_USER} --password $SVN_PASSWORD ${PROJECT_FOLDER}
     else 
         echo "Nothing to do."

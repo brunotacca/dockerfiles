@@ -9,9 +9,11 @@
 
 #sh ./script.sh
 
-# Copy the svn build script to access globaly
+# Copy the svn build scripts to access globaly
 cp /docker_sources/svn_download_build_java.sh /usr/local/bin
 chmod +x /usr/local/bin/svn_download_build_java.sh
+cp /docker_sources/svn_auto_update.sh /usr/local/bin
+chmod +x /usr/local/bin/svn_auto_update.sh
 
 # Copy server.xml to tomcat folder
 cp /docker_sources/server.xml $CATALINA_HOME/conf/
@@ -25,6 +27,12 @@ ln -sfn $CATALINA_HOME/ /usr/share/
 # Logs dir
 mkdir -p /SISTEMAS/logs
 chmod 777 -R /SISTEMAS
+
+# Scheduling auto update
+touch /etc/cron.d/cron_sisproex
+chmod 777 /etc/cron.d/cron_sisproex
+echo "*/5 * * * * sh /docker_sources/svn_auto_update.sh" >> /etc/cron.d/cron_sisproex
+crontab /etc/cron.d/cron_sisproex
 
 # Aliases
 echo "" >> ~/.bashrc
