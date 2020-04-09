@@ -168,7 +168,7 @@ SVN_URL=${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}
 echo $SVN_URL > ${SVN_FOLDER}/last_svn_url
 if [ -d $PROJECT_FOLDER ]; then
     SVN_ACTUAL_URL=$(svn info ${PROJECT_FOLDER} | grep URL | sed "s/URL: //" | head -1)
-    if [ $SVN_ACTUAL_URL == $SVN_URL ]; then
+    if [ $SVN_ACTUAL_URL = $SVN_URL ]; then
        svn update --username ${SVN_USER} ${SVN_PWLINE} ${PROJECT_FOLDER}
     else
        svn switch --username ${SVN_USER} ${SVN_PWLINE} $SVN_URL ${PROJECT_FOLDER}

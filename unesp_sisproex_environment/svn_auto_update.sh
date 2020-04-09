@@ -44,7 +44,7 @@ echo
 SVN_URL=${SVN_ROOT}/${SVN_MODULE}/${SVN_BRANCH}
 echo $SVN_URL > ${SVN_FOLDER}/last_svn_url
 SVN_ACTUAL_URL=$(svn info ${PROJECT_FOLDER} | grep URL | sed "s/URL: //" | head -1)
-if [ $SVN_ACTUAL_URL == $SVN_URL ]; then
+if [ $SVN_ACTUAL_URL = $SVN_URL ]; then
 
     LOCAL_REVISION=$(svn info ${PROJECT_FOLDER} | grep Revision | sed "s/Revision: //" | head -1)
     echo "Local Revision: ${LOCAL_REVISION}"
@@ -54,9 +54,10 @@ if [ $SVN_ACTUAL_URL == $SVN_URL ]; then
 
     echo "==============================================================="
     if [ LOCAL_REVISION != ACTUAL_REVISION ]; then
-        echo "Performing update..."
+        echo "Performing update... Running svn_download_build_java.sh last"
         echo 
-        svn update --non-interactive --trust-server-cert --username ${SVN_USER} --password $SVN_PASSWORD ${PROJECT_FOLDER}
+        sh svn_download_build_java.sh last
+        #svn update --non-interactive --trust-server-cert --username ${SVN_USER} --password $SVN_PASSWORD ${PROJECT_FOLDER}
     else 
         echo "Nothing to do."
         echo 
