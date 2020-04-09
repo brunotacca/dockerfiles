@@ -20,7 +20,6 @@ fi
 USER_FOLDER=$HOME
 SVN_FOLDER=$USER_FOLDER/svn
 PROJECT_FOLDER=${SVN_FOLDER}/${SVN_MODULE}
-echo "SVN Folder: ${SVN_FOLDER}"
 
 # Checking svn folder
 if [ ! -d $SVN_FOLDER ] 
