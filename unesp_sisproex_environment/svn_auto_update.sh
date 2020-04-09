@@ -65,6 +65,7 @@ if [ $SVN_ACTUAL_URL == $SVN_URL ]; then
 
 else 
     echo "URL Mismatch. Run svn_download_build_java to switch."
+    echo "Actual URL: ${SVN_ACTUAL_URL}"
     exit 0
 fi
 
