@@ -21,6 +21,10 @@ cat $CATALINA_HOME/conf/server.xml
 # Edit the server.xml with your custom configurations
 sh /docker_sources/config_server_xml.sh
 
+# Config JSP quote scaping on catalina.properties
+echo "" >> $CATALINA_HOME/conf/catalina.properties
+echo "org.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false" >> $CATALINA_HOME/conf/catalina.properties
+
 # Simbolic link to tomcat at /usr/share (needed at sisproex build.xml)
 ln -sfn $CATALINA_HOME/ /usr/share/
 
