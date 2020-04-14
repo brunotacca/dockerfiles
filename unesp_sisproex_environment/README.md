@@ -23,8 +23,9 @@ How to use:
 - - If you save your credentials the first time, later you can just run the alias "svn_download_build_java.sh last"
 - - Although it's not recommended
 6) Useful alias to create at your host machine:
-- alias tt='docker logs -t -f {container-name}'
+- alias tt='docker logs -f {container-name}'
 - alias build='docker exec -it {container-name} bash svn_download_build_java.sh last'
+- alias dcbash='docker exec -it {container-name} bash'
 - alias dcu="docker-compose up -d"
 - alias dcs="docker-compose stop"
 - alias dcd="docker-compose down"
