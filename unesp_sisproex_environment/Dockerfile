@@ -16,6 +16,7 @@ RUN set -eux; \
     locale-gen en_US en_US.UTF-8 pt_BR.UTF-8; \
     echo "Brazil/East" > /etc/timezone; \
     update-locale LANG=pt_BR.UTF-8; \
+    dpkg-reconfigure --frontend noninteractive tzdata; \
 # Postgresql JDBC - JDK7
     wget https://jdbc.postgresql.org/download/postgresql-42.2.12.jre7.jar; \
     mv postgresql-42.2.12.jre7.jar $CATALINA_HOME/lib; \
