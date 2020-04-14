@@ -33,10 +33,10 @@ mkdir -p /SISTEMAS/logs
 chmod 777 -R /SISTEMAS
 
 # Scheduling auto update
-touch /etc/cron.d/cron_sisproex
-chmod 777 /etc/cron.d/cron_sisproex
-echo "*/5 * * * * sh /docker_sources/svn_auto_update.sh" >> /etc/cron.d/cron_sisproex
-crontab /etc/cron.d/cron_sisproex
+#touch /etc/cron.d/cron_sisproex
+#chmod 777 /etc/cron.d/cron_sisproex
+#echo "*/5 * * * * sh /docker_sources/svn_auto_update.sh" >> /etc/cron.d/cron_sisproex
+#crontab /etc/cron.d/cron_sisproex
 
 # Aliases
 echo "" >> ~/.bashrc
