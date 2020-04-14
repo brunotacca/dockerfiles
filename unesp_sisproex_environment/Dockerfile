@@ -5,6 +5,7 @@ LABEL maintainer="Bruno Tacca <github.com/brunotacca>"
 # Environment locale variables
 ENV LANG=pt_BR.UTF-8
 ENV LC_ALL=pt_BR.UTF-8
+ENV TZ=Brazil/East
 
 RUN set -eux; \
     savedAptMark="$(apt-mark showmanual)"; \
