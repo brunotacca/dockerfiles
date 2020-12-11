@@ -18,7 +18,7 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends curl dpkg-dev gcc libapr1-dev libssl-dev make; \
     apt-get autoclean && apt-get clean --dry-run; \
 # Make sure to check if these mirrors are available. It's also good to validate them with md5sum and sha512sum.
-    curl -v -O -L -k http://mirror.nbtelecom.com.br/apache/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz; \
+    curl -v -O -L -k https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz; \
     mkdir -p $CATALINA_HOME; \
     mv apache-tomcat-$TOMCAT_VERSION.tar.gz $CATALINA_HOME/tomcat.tar.gz; \
     cd $CATALINA_HOME; \
