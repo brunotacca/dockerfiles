@@ -47,7 +47,7 @@ if [ $SVN_ACTUAL_URL = $SVN_URL ]; then
 
     LOCAL_REVISION=$(svn info ${PROJECT_FOLDER} | grep Revision | sed "s/Revision: //" | head -1)
     echo "Local Revision: ${LOCAL_REVISION}"
-    ACTUAL_REVISION=$(svn info ${SVN_URL} | grep Revision | sed "s/Revision: //" | head -1)
+    ACTUAL_REVISION=$(svn info --non-interactive --trust-server-cert --username ${SVN_USER} --password $SVN_PASSWORD ${SVN_URL} | grep Revision | sed "s/Revision: //" | head -1)
     echo "Actual Revision: ${ACTUAL_REVISION}"
     echo 
 

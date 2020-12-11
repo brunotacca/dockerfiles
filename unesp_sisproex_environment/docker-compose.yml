@@ -4,6 +4,10 @@ services:
     sisproex:
         container_name: sisproex
         image: tacca/unesp_sisproex_environment
+        logging:
+            options:
+                max-size: "500m"
+                max-file: "3"
         hostname: sisproex.homolog.unesp.br
         restart: always
         ports:
