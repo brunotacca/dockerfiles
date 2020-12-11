@@ -1,5 +1,5 @@
 #FROM ubuntu:18.04
-FROM tacca/ubuntu18_jdk7
+FROM tacca/ubuntu18_jdk7-msttf
 
 LABEL maintainer="Bruno Tacca <github.com/brunotacca>"
 
