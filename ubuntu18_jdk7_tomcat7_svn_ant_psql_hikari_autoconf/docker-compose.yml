@@ -1,8 +1,8 @@
 version: '3.3'
 
 services:
-    sisproex:
-        container_name: sisproex
+    tomseven:
+        container_name: tomseven
         image: tacca/ubuntu18_jdk7_tomcat7_svn_ant_psql_hikari_autoconf
         logging:
             options:
