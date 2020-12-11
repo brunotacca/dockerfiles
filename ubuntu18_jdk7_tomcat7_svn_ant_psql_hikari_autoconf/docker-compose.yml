@@ -3,12 +3,12 @@ version: '3.3'
 services:
     sisproex:
         container_name: sisproex
-        image: tacca/unesp_sisproex_environment
+        image: tacca/ubuntu18_jdk7_tomcat7_svn_ant_psql_hikari_autoconf
         logging:
             options:
-                max-size: "500m"
+                max-size: "100m"
                 max-file: "3"
-        hostname: sisproex.homolog.unesp.br
+        hostname: hostname.institution.com
         restart: always
         ports:
             - "8888:8080"
