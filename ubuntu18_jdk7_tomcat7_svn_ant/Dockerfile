@@ -7,11 +7,11 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y wget; \
     apt-get autoclean && apt-get clean --dry-run; \
-    # Ant 1.9.14 - JDK7 Compatible.
-    wget http://ftp.unicamp.br/pub/apache//ant/binaries/apache-ant-1.9.14-bin.tar.gz; \
-    tar -xf apache-ant-1.9.14-bin.tar.gz  -C /usr/local; \
-    ln -s /usr/local/apache-ant-1.9.14/ /usr/local/ant; \
-    rm apache-ant-1.9.14-bin.tar.gz; \
+    # Ant 1.9.15 - JDK7 Compatible.
+    wget https://downloads.apache.org//ant/binaries/apache-ant-1.9.15-bin.tar.gz; \
+    tar -xf apache-ant-1.9.15-bin.tar.gz  -C /usr/local; \
+    ln -s /usr/local/apache-ant-1.9.15/ /usr/local/ant; \
+    rm apache-ant-1.9.15-bin.tar.gz; \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
 	apt-mark manual $savedAptMark > /dev/null; \
