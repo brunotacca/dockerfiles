@@ -1,11 +1,10 @@
-# UNESP NDSI - SISPROEX Test Environment
+# Tomcat7 JDK7 AutoConf Test Environment
 
 How to use:
 1) Install docker & docker-compose.
 2) Download and extract the necessary items at your local machine.
-- wget https://github.com/brunotacca/dockerfiles/raw/master/unesp_sisproex_environment/unesp_sisproex_environment.tar
-- tar xvf unesp_sisproex_environment.tar
-- cd unesp_sisproex_environment
+- tar xvf tomcat7_jdk7_autoconf.tar
+- cd tomcat7_jdk7_autoconf
 3) Edit docker-compose.yml for your needs 
 - Change the container name and hostname
 - Make sure to have a config.properties in your project for your container hostname
