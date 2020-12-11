@@ -13,6 +13,8 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y rsync vim locales wget tzdata; \
     apt-get autoclean && apt-get clean --dry-run; \
+# copy msttf fonts to jre folder
+    cp -r /usr/share/fonts/truetype/msttcorefonts/* $JAVA_HOME/jre/lib/fonts/; \
 # Configure these Locale vars for your need.
     locale-gen en_US en_US.UTF-8 pt_BR.UTF-8; \
     echo "Brazil/East" > /etc/timezone; \
